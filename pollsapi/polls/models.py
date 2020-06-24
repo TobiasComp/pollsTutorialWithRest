@@ -22,5 +22,8 @@ class Vote(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     voted_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.voted_by.username
+
     class Meta:
         unique_together = ("poll", "voted_by")
